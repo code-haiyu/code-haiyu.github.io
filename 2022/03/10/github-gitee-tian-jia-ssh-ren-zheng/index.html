@@ -8,7 +8,7 @@
     <meta name="description" content="1）删除旧ssh文件​        在c:&amp;#x2F;用户&amp;#x2F;用户名 下有一个.ssh文件夹，删除里面的旧文件，如果没有.ssh文件夹，新建一个
 2）生成ssh-key
 打开终端，执行下面指令（可以用git bash）
-12345">
+// gi">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -452,10 +452,25 @@
                 
 
                 
-
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    342
+                </div>
                 
 
                 
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    1 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
             </div>
         </div>
         <hr class="clearfix">
@@ -469,7 +484,14 @@
                 <h2 id="1）删除旧ssh文件"><a href="#1）删除旧ssh文件" class="headerlink" title="1）删除旧ssh文件"></a>1）删除旧ssh文件</h2><p>​        在c:&#x2F;用户&#x2F;用户名 下有一个.ssh文件夹，删除里面的旧文件，如果没有.ssh文件夹，新建一个</p>
 <h2 id="2）生成ssh-key"><a href="#2）生成ssh-key" class="headerlink" title="2）生成ssh-key"></a>2）生成ssh-key</h2><ul>
 <li><p>打开终端，执行下面指令（可以用git bash）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// github ---- SSH-key</span><br><span class="line">ssh-keygen -t rsa -C &quot;aaa@xx.com&quot; -f ~/.ssh/github_id_rsa</span><br><span class="line">// gitlab ---- SSH-key</span><br><span class="line">ssh-keygen -t rsa -C &quot;bbb@xx.com&quot; -f ~/.ssh/gitlab_id_rsa</span><br><span class="line">// gitee ---- SSH-key</span><br><span class="line">ssh-keygen -t rsa -C &quot;ccc@xx.com&quot; -f ~/.ssh/gitee_id_rsa</span><br></pre></td></tr></table></figure></li>
+<pre class=" language-pow"><code class="language-pow">// github ---- SSH-key
+ssh-keygen -t rsa -C "aaa@xx.com" -f ~/.ssh/github_id_rsa
+// gitlab ---- SSH-key
+ssh-keygen -t rsa -C "bbb@xx.com" -f ~/.ssh/gitlab_id_rsa
+// gitee ---- SSH-key
+ssh-keygen -t rsa -C "ccc@xx.com" -f ~/.ssh/gitee_id_rsa
+</code></pre>
+</li>
 </ul>
 <h2 id="3）配置config文件"><a href="#3）配置config文件" class="headerlink" title="3）配置config文件"></a>3）配置config文件</h2><ul>
 <li><p>cd ~&#x2F;.ssh</p>
@@ -477,26 +499,54 @@
 <li><p>touch ~&#x2F;.ssh&#x2F;config</p>
 </li>
 <li><p>在config文件添加如下配置：</p>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="params">#</span> github</span><br><span class="line">Host github.com</span><br><span class="line">HostName github.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/github<span class="built_in">_</span>id<span class="built_in">_</span>rsa</span><br><span class="line"></span><br><span class="line"><span class="params">#</span> gitee</span><br><span class="line">Host gitee.com</span><br><span class="line">HostName gitee.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/gitee<span class="built_in">_</span>id<span class="built_in">_</span>rsa</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<pre class=" language-tex"><code class="language-tex"># github
+Host github.com
+HostName github.com
+PreferredAuthentications publickey
+IdentityFile ~/.ssh/github_id_rsa
+
+# gitee
+Host gitee.com
+HostName gitee.com
+PreferredAuthentications publickey
+IdentityFile ~/.ssh/gitee_id_rsa
+</code></pre>
+</li>
 </ul>
 <h2 id="4）上传key"><a href="#4）上传key" class="headerlink" title="4）上传key"></a>4）上传key</h2><p>&#x2F;&#x2F; GitHub<br>复制”github_id_rsa.pub”文件内容，添加至GitHub<br>&#x2F;&#x2F; Gitee<br>复制”gitee_id_rsa.pub”文件内容，添加至Gitee</p>
-<h2 id="5）验证ssh"><a href="#5）验证ssh" class="headerlink" title="5）验证ssh"></a>5）验证ssh</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// GitHub</span><br><span class="line">ssh -T git@github.com</span><br><span class="line">// Gitee</span><br><span class="line">ssh -T git@gitee.com</span><br></pre></td></tr></table></figure>
-
+<h2 id="5）验证ssh"><a href="#5）验证ssh" class="headerlink" title="5）验证ssh"></a>5）验证ssh</h2><pre class=" language-po"><code class="language-po">// GitHub
+ssh -T git@github.com
+// Gitee
+ssh -T git@gitee.com
+</code></pre>
 <ul>
 <li><p>接着输入“yes”</p>
 </li>
 <li><p>若看到如下内容，则验证通过</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// GitHub</span><br><span class="line">&quot;Hi xxxx! You&#x27;ve successfully authenticated, but GitHub does not provide shell access.&quot;</span><br><span class="line">// Gitee</span><br><span class="line">&quot;Hi xxxx! You&#x27;ve successfully authenticated, but Gitee does not provide shell access.&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class=" language-pow"><code class="language-pow">// GitHub
+"Hi xxxx! You've successfully authenticated, but GitHub does not provide shell access."
+// Gitee
+"Hi xxxx! You've successfully authenticated, but Gitee does not provide shell access."
+</code></pre>
 </li>
 <li><p>若看到如下内容，则验证未通过</p>
 </li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// GitHub</span><br><span class="line">&quot;git@github.com: Permission denied (publickey).&quot;</span><br><span class="line">// Gitee</span><br><span class="line">&quot;git@gitee.com: Permission denied (publickey).&quot;</span><br></pre></td></tr></table></figure>
-
+<pre><code>// GitHub
+&quot;git@github.com: Permission denied (publickey).&quot;
+// Gitee
+&quot;git@gitee.com: Permission denied (publickey).&quot;
+</code></pre>
 <ul>
 <li>未通过，解决方案，输入如下指令</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 由于上诉通过&quot;ssh-keygen -t rsa -C&quot;生成的key是指定路径的，故此处需要手动执行如下指令：</span><br><span class="line">ssh-agent -s</span><br><span class="line">// GitHub</span><br><span class="line">ssh-add ~/.ssh/github_id_rsa</span><br><span class="line">// Gitee</span><br><span class="line">ssh-add ~/.ssh/gitee_id_rsa</span><br></pre></td></tr></table></figure>
+<pre><code>// 由于上诉通过&quot;ssh-keygen -t rsa -C&quot;生成的key是指定路径的，故此处需要手动执行如下指令：
+ssh-agent -s
+// GitHub
+ssh-add ~/.ssh/github_id_rsa
+// Gitee
+ssh-add ~/.ssh/gitee_id_rsa
+</code></pre>
 
                 
             </div>
@@ -523,7 +573,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://code-haiyu.github.io/2022/03/10/GitHub%E3%80%81Gitee%E6%B7%BB%E5%8A%A0SSH%E8%AE%A4%E8%AF%81/">http://code-haiyu.github.io/2022/03/10/GitHub%E3%80%81Gitee%E6%B7%BB%E5%8A%A0SSH%E8%AE%A4%E8%AF%81/</a>
+                    <a href="http://code-haiyu.github.io/2022/03/10/github-gitee-tian-jia-ssh-ren-zheng/">http://code-haiyu.github.io/2022/03/10/github-gitee-tian-jia-ssh-ren-zheng/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -737,7 +787,7 @@
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/2022/03/10/GitHub%E3%80%81Gitee%E6%B7%BB%E5%8A%A0SSH%E8%AE%A4%E8%AF%81/">
+                <a href="/2022/03/10/github-gitee-tian-jia-ssh-ren-zheng/">
                     <div class="card-image">
                         
                         
@@ -775,7 +825,7 @@
                 本篇&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
-                <a href="/2022/03/10/GitHub%E3%80%81Gitee%E6%B7%BB%E5%8A%A0SSH%E8%AE%A4%E8%AF%81/">
+                <a href="/2022/03/10/github-gitee-tian-jia-ssh-ren-zheng/">
                     <div class="card-image">
                         
                         
@@ -1001,6 +1051,9 @@
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">342</span>
             
             
             
