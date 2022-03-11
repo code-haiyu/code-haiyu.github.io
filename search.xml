@@ -1,102 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>vue_cli使用</title>
-    <url>/2022/03/11/vue-cli-shi-yong/</url>
-    <content><![CDATA[<h1 id="1-搭建vue项目"><a href="#1-搭建vue项目" class="headerlink" title="1.搭建vue项目"></a>1.搭建vue项目</h1><h2 id="1-首先安装node-js"><a href="#1-首先安装node-js" class="headerlink" title="1)首先安装node.js"></a>1)首先安装node.js</h2><p><a href="http://nodejs.cn/">node官网</a></p>
-<p>检查是否安装成功</p>
-<pre class=" language-powershell"><code class="language-powershell">node <span class="token operator">-</span>v
-npm <span class="token operator">-</span>v
-</code></pre>
-<h2 id="2-由于国内npm下载慢，建议安装cnpm淘宝镜像"><a href="#2-由于国内npm下载慢，建议安装cnpm淘宝镜像" class="headerlink" title="2)由于国内npm下载慢，建议安装cnpm淘宝镜像"></a>2)由于国内npm下载慢，建议安装cnpm淘宝镜像</h2><pre class=" language-powershell"><code class="language-powershell"> npm install <span class="token operator">-</span>g cnpm <span class="token operator">--</span>registry=https:<span class="token operator">/</span><span class="token operator">/</span>registry<span class="token punctuation">.</span>npm<span class="token punctuation">.</span>taobao<span class="token punctuation">.</span>org
-</code></pre>
-<p>检查是否安装成功</p>
-<pre class=" language-powershell"><code class="language-powershell">cnpm <span class="token operator">-</span>v
-</code></pre>
-<h2 id="3）安装vue-cli"><a href="#3）安装vue-cli" class="headerlink" title="3）安装vue-cli"></a>3）安装vue-cli</h2><pre class=" language-powershell"><code class="language-powershell">cnpm install vue<span class="token operator">-</span><span class="token function">cli</span> <span class="token operator">-</span>g
-</code></pre>
-<p>安装完成后运行下面指令</p>
-<pre class=" language-powershell"><code class="language-powershell">vue list
-</code></pre>
-<p><img src="C:\Users\zhenghaiyu\AppData\Roaming\Typora\typora-user-images\image-20220311171617322.png" alt="image-20220311171617322"></p>
-<p>可以看到vue-cli为我们提供了几个模板，不过主要使用的是webpack模板</p>
-<h2 id="4）使用webpage模板创建运行vue项目"><a href="#4）使用webpage模板创建运行vue项目" class="headerlink" title="4）使用webpage模板创建运行vue项目"></a>4）使用webpage模板创建运行vue项目</h2><p>首先创造一个文件夹，进入文件夹路径执行指令</p>
-<ul>
-<li>注意项目名不能有大写</li>
-</ul>
-<pre class=" language-powershell"><code class="language-powershell">vue init webpack <span class="token operator">+</span> 项目名
-</code></pre>
-<p>然后会出现下面几个选项，可以按下面操作</p>
-<pre class=" language-powershell"><code class="language-powershell">? Project name test <span class="token comment" spellcheck="true">#（回车）</span>
-? Project description A Vue<span class="token punctuation">.</span>js project <span class="token comment" spellcheck="true">#（回车）</span>
-? Author code<span class="token operator">-</span>haiyu &lt;2289349667@qq<span class="token punctuation">.</span>com><span class="token comment" spellcheck="true">#（回车）</span>
-? Vue build <span class="token comment" spellcheck="true">#（选第一个，runtime+compiler)</span>
-? Install vue<span class="token operator">-</span>router?<span class="token comment" spellcheck="true"># (建议Yes,会帮我们生成路由目标，如果选了no,可以自己在后面安装)</span>
-? Use ESLint to lint your code?<span class="token comment" spellcheck="true"># (No)</span>
-? <span class="token function">Set</span> up unit tests <span class="token comment" spellcheck="true">#(No)</span>
-? Setup e2e tests with Nightwatch? <span class="token comment" spellcheck="true">#(No)</span>
-? Should we run `npm install` <span class="token keyword">for</span> you after the project has been created?  <span class="token comment" spellcheck="true">#(no)</span>
-</code></pre>
-<p>然后出现下面指令，根据指令运行项目</p>
-<pre class=" language-powershell"><code class="language-powershell"><span class="token comment" spellcheck="true"># Project initialization finished!</span>
-<span class="token comment" spellcheck="true"># ========================</span>
-
-To get started:
-
-  cd test <span class="token comment" spellcheck="true">#切换到项目目录</span>
-  npm install <span class="token punctuation">(</span>or <span class="token keyword">if</span> <span class="token keyword">using</span> yarn: yarn<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#这里是下载项目所需依赖，会下载到node_modules包下</span>
-  npm run dev <span class="token comment" spellcheck="true">#运行项目</span>
-
-Documentation can be found at https:<span class="token operator">/</span><span class="token operator">/</span>vuejs<span class="token operator">-</span>templates<span class="token punctuation">.</span>github<span class="token punctuation">.</span>io<span class="token operator">/</span>webpack
-</code></pre>
-<p>成功运行后可以在8080端口访问项目</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h1 id="vue-router安装使用"><a href="#vue-router安装使用" class="headerlink" title="vue-router安装使用"></a>vue-router安装使用</h1><p> 如果在上面npm install没有选择安装router，可以选择手动安装，指令</p>
-<pre class=" language-powershell"><code class="language-powershell">npm install vue<span class="token operator">-</span>router <span class="token operator">--</span>save
-</code></pre>
-<p>安装未完成后再src下建一个router文件夹，生成index.js文件，用来配置路由信息</p>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">'vue'</span>
-<span class="token keyword">import</span> Router <span class="token keyword">from</span> <span class="token string">'vue-router'</span> <span class="token comment" spellcheck="true">//导入路由</span>
-<span class="token keyword">import</span> HelloWorld <span class="token keyword">from</span> <span class="token string">'@/components/HelloWorld'</span><span class="token comment" spellcheck="true">//导入要路由的组件</span>
-
-Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>Router<span class="token punctuation">)</span><span class="token comment" spellcheck="true">//使用路由</span>
-
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">new</span> <span class="token class-name">Router</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-  routes<span class="token punctuation">:</span> <span class="token punctuation">[</span>
-    <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-      path<span class="token punctuation">:</span> <span class="token string">'/helloWorld'</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">//路由路径</span>
-      name<span class="token punctuation">:</span> <span class="token string">'HelloWorld'</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">//路由名称</span>
-      component<span class="token punctuation">:</span> HelloWorld<span class="token punctuation">,</span><span class="token comment" spellcheck="true">//路由组件</span>
-      children<span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//子路由</span>
-          path<span class="token punctuation">:</span> <span class="token string">'/xxx'</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">//子路由路径</span>
-          name<span class="token punctuation">:</span> <span class="token string">'xxx'</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">//子路由名称</span>
-          component<span class="token punctuation">:</span> xxx<span class="token punctuation">,</span><span class="token comment" spellcheck="true">//子路由组件</span>
-          <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
-          <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">]</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-  <span class="token punctuation">]</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
-</code></pre>
-<p>配置路由信息后，要到main.js导入路由信息</p>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">'vue'</span>
-<span class="token keyword">import</span> App <span class="token keyword">from</span> <span class="token string">'./App'</span>
-<span class="token keyword">import</span> router <span class="token keyword">from</span> <span class="token string">'./router'</span><span class="token comment" spellcheck="true">//导入路由信息</span>
-
-Vue<span class="token punctuation">.</span>config<span class="token punctuation">.</span>productionTip <span class="token operator">=</span> <span class="token boolean">false</span>
-
-<span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-  el<span class="token punctuation">:</span> <span class="token string">'#app'</span><span class="token punctuation">,</span>
-  router<span class="token punctuation">,</span><span class="token comment" spellcheck="true">//使用路由配置</span>
-  components<span class="token punctuation">:</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> App <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
-  template<span class="token punctuation">:</span> <span class="token string">'&lt;App/>'</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
-</code></pre>
-<p>配置完成后，就可以使用了</p>
-<pre class=" language-vue"><code class="language-vue"><router-link to="/helloWorld">跳转</router-link> //用此标签来跳转指定路由
-<router-view/> //跳转的路由页面在此显示
-</code></pre>
-]]></content>
-  </entry>
-  <entry>
     <title>GitHub、Gitee添加SSH认证</title>
     <url>/2022/03/10/github-gitee-tian-jia-ssh-ren-zheng/</url>
     <content><![CDATA[<h2 id="1）删除旧ssh文件"><a href="#1）删除旧ssh文件" class="headerlink" title="1）删除旧ssh文件"></a>1）删除旧ssh文件</h2><p>​        在c:&#x2F;用户&#x2F;用户名 下有一个.ssh文件夹，删除里面的旧文件，如果没有.ssh文件夹，新建一个</p>
@@ -163,6 +67,102 @@ ssh<span class="token operator">-</span>agent <span class="token operator">-</sp
 ssh<span class="token operator">-</span>add ~<span class="token operator">/</span><span class="token punctuation">.</span>ssh<span class="token operator">/</span>github_id_rsa
 <span class="token operator">/</span><span class="token operator">/</span> Gitee
 ssh<span class="token operator">-</span>add ~<span class="token operator">/</span><span class="token punctuation">.</span>ssh<span class="token operator">/</span>gitee_id_rsa
+</code></pre>
+]]></content>
+  </entry>
+  <entry>
+    <title>vue_cli使用</title>
+    <url>/2022/03/11/vue-cli-shi-yong/</url>
+    <content><![CDATA[<h1 id="1-搭建vue项目"><a href="#1-搭建vue项目" class="headerlink" title="1.搭建vue项目"></a>1.搭建vue项目</h1><h2 id="1-首先安装node-js"><a href="#1-首先安装node-js" class="headerlink" title="1)首先安装node.js"></a>1)首先安装node.js</h2><p><a href="http://nodejs.cn/">node官网</a></p>
+<p>检查是否安装成功</p>
+<pre class=" language-powershell"><code class="language-powershell">node <span class="token operator">-</span>v
+npm <span class="token operator">-</span>v
+</code></pre>
+<h2 id="2-由于国内npm下载慢，建议安装cnpm淘宝镜像"><a href="#2-由于国内npm下载慢，建议安装cnpm淘宝镜像" class="headerlink" title="2)由于国内npm下载慢，建议安装cnpm淘宝镜像"></a>2)由于国内npm下载慢，建议安装cnpm淘宝镜像</h2><pre class=" language-powershell"><code class="language-powershell"> npm install <span class="token operator">-</span>g cnpm <span class="token operator">--</span>registry=https:<span class="token operator">/</span><span class="token operator">/</span>registry<span class="token punctuation">.</span>npm<span class="token punctuation">.</span>taobao<span class="token punctuation">.</span>org
+</code></pre>
+<p>检查是否安装成功</p>
+<pre class=" language-powershell"><code class="language-powershell">cnpm <span class="token operator">-</span>v
+</code></pre>
+<h2 id="3）安装vue-cli"><a href="#3）安装vue-cli" class="headerlink" title="3）安装vue-cli"></a>3）安装vue-cli</h2><pre class=" language-powershell"><code class="language-powershell">cnpm install vue<span class="token operator">-</span><span class="token function">cli</span> <span class="token operator">-</span>g
+</code></pre>
+<p>安装完成后运行下面指令</p>
+<pre class=" language-powershell"><code class="language-powershell">vue list
+</code></pre>
+<p><img src="/.io//1.png"></p>
+<p>可以看到vue-cli为我们提供了几个模板，不过主要使用的是webpack模板</p>
+<h2 id="4）使用webpage模板创建运行vue项目"><a href="#4）使用webpage模板创建运行vue项目" class="headerlink" title="4）使用webpage模板创建运行vue项目"></a>4）使用webpage模板创建运行vue项目</h2><p>首先创造一个文件夹，进入文件夹路径执行指令</p>
+<ul>
+<li>注意项目名不能有大写</li>
+</ul>
+<pre class=" language-powershell"><code class="language-powershell">vue init webpack <span class="token operator">+</span> 项目名
+</code></pre>
+<p>然后会出现下面几个选项，可以按下面操作</p>
+<pre class=" language-powershell"><code class="language-powershell">? Project name test <span class="token comment" spellcheck="true">#（回车）</span>
+? Project description A Vue<span class="token punctuation">.</span>js project <span class="token comment" spellcheck="true">#（回车）</span>
+? Author code<span class="token operator">-</span>haiyu &lt;2289349667@qq<span class="token punctuation">.</span>com><span class="token comment" spellcheck="true">#（回车）</span>
+? Vue build <span class="token comment" spellcheck="true">#（选第一个，runtime+compiler)</span>
+? Install vue<span class="token operator">-</span>router?<span class="token comment" spellcheck="true"># (建议Yes,会帮我们生成路由目标，如果选了no,可以自己在后面安装)</span>
+? Use ESLint to lint your code?<span class="token comment" spellcheck="true"># (No)</span>
+? <span class="token function">Set</span> up unit tests <span class="token comment" spellcheck="true">#(No)</span>
+? Setup e2e tests with Nightwatch? <span class="token comment" spellcheck="true">#(No)</span>
+? Should we run `npm install` <span class="token keyword">for</span> you after the project has been created?  <span class="token comment" spellcheck="true">#(no)</span>
+</code></pre>
+<p>然后出现下面指令，根据指令运行项目</p>
+<pre class=" language-powershell"><code class="language-powershell"><span class="token comment" spellcheck="true"># Project initialization finished!</span>
+<span class="token comment" spellcheck="true"># ========================</span>
+
+To get started:
+
+  cd test <span class="token comment" spellcheck="true">#切换到项目目录</span>
+  npm install <span class="token punctuation">(</span>or <span class="token keyword">if</span> <span class="token keyword">using</span> yarn: yarn<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#这里是下载项目所需依赖，会下载到node_modules包下</span>
+  npm run dev <span class="token comment" spellcheck="true">#运行项目</span>
+
+Documentation can be found at https:<span class="token operator">/</span><span class="token operator">/</span>vuejs<span class="token operator">-</span>templates<span class="token punctuation">.</span>github<span class="token punctuation">.</span>io<span class="token operator">/</span>webpack
+</code></pre>
+<p>成功运行后可以在8080端口访问项目</p>
+<h2 id><a href="#" class="headerlink" title></a></h2><h1 id="vue-router安装使用"><a href="#vue-router安装使用" class="headerlink" title="vue-router安装使用"></a>vue-router安装使用</h1><p> 如果在上面npm install没有选择安装router，可以选择手动安装，指令</p>
+<pre class=" language-powershell"><code class="language-powershell">npm install vue<span class="token operator">-</span>router <span class="token operator">--</span>save
+</code></pre>
+<p>安装未完成后再src下建一个router文件夹，生成index.js文件，用来配置路由信息</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">'vue'</span>
+<span class="token keyword">import</span> Router <span class="token keyword">from</span> <span class="token string">'vue-router'</span> <span class="token comment" spellcheck="true">//导入路由</span>
+<span class="token keyword">import</span> HelloWorld <span class="token keyword">from</span> <span class="token string">'@/components/HelloWorld'</span><span class="token comment" spellcheck="true">//导入要路由的组件</span>
+
+Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>Router<span class="token punctuation">)</span><span class="token comment" spellcheck="true">//使用路由</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">new</span> <span class="token class-name">Router</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+  routes<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+      path<span class="token punctuation">:</span> <span class="token string">'/helloWorld'</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">//路由路径</span>
+      name<span class="token punctuation">:</span> <span class="token string">'HelloWorld'</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">//路由名称</span>
+      component<span class="token punctuation">:</span> HelloWorld<span class="token punctuation">,</span><span class="token comment" spellcheck="true">//路由组件</span>
+      children<span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//子路由</span>
+          path<span class="token punctuation">:</span> <span class="token string">'/xxx'</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">//子路由路径</span>
+          name<span class="token punctuation">:</span> <span class="token string">'xxx'</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">//子路由名称</span>
+          component<span class="token punctuation">:</span> xxx<span class="token punctuation">,</span><span class="token comment" spellcheck="true">//子路由组件</span>
+          <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
+          <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">]</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+  <span class="token punctuation">]</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
+</code></pre>
+<p>配置路由信息后，要到main.js导入路由信息</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">'vue'</span>
+<span class="token keyword">import</span> App <span class="token keyword">from</span> <span class="token string">'./App'</span>
+<span class="token keyword">import</span> router <span class="token keyword">from</span> <span class="token string">'./router'</span><span class="token comment" spellcheck="true">//导入路由信息</span>
+
+Vue<span class="token punctuation">.</span>config<span class="token punctuation">.</span>productionTip <span class="token operator">=</span> <span class="token boolean">false</span>
+
+<span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+  el<span class="token punctuation">:</span> <span class="token string">'#app'</span><span class="token punctuation">,</span>
+  router<span class="token punctuation">,</span><span class="token comment" spellcheck="true">//使用路由配置</span>
+  components<span class="token punctuation">:</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> App <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
+  template<span class="token punctuation">:</span> <span class="token string">'&lt;App/>'</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
+</code></pre>
+<p>配置完成后，就可以使用了</p>
+<pre class=" language-vue"><code class="language-vue"><router-link to="/helloWorld">跳转</router-link> //用此标签来跳转指定路由
+<router-view/> //跳转的路由页面在此显示
 </code></pre>
 ]]></content>
   </entry>
