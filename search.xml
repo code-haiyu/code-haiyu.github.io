@@ -1,76 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>GitHub、Gitee添加SSH认证</title>
-    <url>/2022/03/10/github-gitee-tian-jia-ssh-ren-zheng/</url>
-    <content><![CDATA[<h2 id="1）删除旧ssh文件"><a href="#1）删除旧ssh文件" class="headerlink" title="1）删除旧ssh文件"></a>1）删除旧ssh文件</h2><p>​        在c:&#x2F;用户&#x2F;用户名 下有一个.ssh文件夹，删除里面的旧文件，如果没有.ssh文件夹，新建一个</p>
-<h2 id="2）生成ssh-key"><a href="#2）生成ssh-key" class="headerlink" title="2）生成ssh-key"></a>2）生成ssh-key</h2><ul>
-<li><p>打开终端，执行下面指令（可以用git bash）</p>
-<pre class=" language-pow"><code class="language-pow">// github ---- SSH-key
-ssh-keygen -t rsa -C "aaa@xx.com" -f ~/.ssh/github_id_rsa
-// gitlab ---- SSH-key
-ssh-keygen -t rsa -C "bbb@xx.com" -f ~/.ssh/gitlab_id_rsa
-// gitee ---- SSH-key
-ssh-keygen -t rsa -C "ccc@xx.com" -f ~/.ssh/gitee_id_rsa
-</code></pre>
-</li>
-</ul>
-<h2 id="3）配置config文件"><a href="#3）配置config文件" class="headerlink" title="3）配置config文件"></a>3）配置config文件</h2><ul>
-<li><p>cd ~&#x2F;.ssh</p>
-</li>
-<li><p>touch ~&#x2F;.ssh&#x2F;config</p>
-</li>
-<li><p>在config文件添加如下配置：</p>
-<pre class=" language-tex"><code class="language-tex"># github
-Host github.com
-HostName github.com
-PreferredAuthentications publickey
-IdentityFile ~/.ssh/github_id_rsa
-
-# gitee
-Host gitee.com
-HostName gitee.com
-PreferredAuthentications publickey
-IdentityFile ~/.ssh/gitee_id_rsa
-</code></pre>
-</li>
-</ul>
-<h2 id="4）上传key"><a href="#4）上传key" class="headerlink" title="4）上传key"></a>4）上传key</h2><p>&#x2F;&#x2F; GitHub<br>复制”github_id_rsa.pub”文件内容，添加至GitHub<br>&#x2F;&#x2F; Gitee<br>复制”gitee_id_rsa.pub”文件内容，添加至Gitee</p>
-<h2 id="5）验证ssh"><a href="#5）验证ssh" class="headerlink" title="5）验证ssh"></a>5）验证ssh</h2><pre class=" language-po"><code class="language-po">// GitHub
-ssh -T git@github.com
-// Gitee
-ssh -T git@gitee.com
-</code></pre>
-<ul>
-<li>接着输入“yes”</li>
-<li>若看到如下内容，则验证通过</li>
-</ul>
-<pre class=" language-powershell"><code class="language-powershell">/<span class="token operator">/</span> GitHub
-<span class="token string">"Hi xxxx! You've successfully authenticated, but GitHub does not provide shell access."</span>
-<span class="token operator">/</span><span class="token operator">/</span> Gitee
-<span class="token string">"Hi xxxx! You've successfully authenticated, but Gitee does not provide shell access."</span>
-</code></pre>
-<ul>
-<li>若看到如下内容，则验证未通过</li>
-</ul>
-<pre class=" language-powershell"><code class="language-powershell">/<span class="token operator">/</span> GitHub
-<span class="token string">"git@github.com: Permission denied (publickey)."</span>
-<span class="token operator">/</span><span class="token operator">/</span> Gitee
-<span class="token string">"git@gitee.com: Permission denied (publickey)."</span>
-</code></pre>
-<ul>
-<li>未通过，解决方案，输入如下指令</li>
-</ul>
-<pre class=" language-powershell"><code class="language-powershell">/<span class="token operator">/</span> 由于上诉通过<span class="token string">"ssh-keygen -t rsa -C"</span>生成的key是指定路径的，故此处需要手动执行如下指令：
-ssh<span class="token operator">-</span>agent <span class="token operator">-</span>s
-<span class="token operator">/</span><span class="token operator">/</span> GitHub
-ssh<span class="token operator">-</span>add ~<span class="token operator">/</span><span class="token punctuation">.</span>ssh<span class="token operator">/</span>github_id_rsa
-<span class="token operator">/</span><span class="token operator">/</span> Gitee
-ssh<span class="token operator">-</span>add ~<span class="token operator">/</span><span class="token punctuation">.</span>ssh<span class="token operator">/</span>gitee_id_rsa
-</code></pre>
-]]></content>
-  </entry>
-  <entry>
     <title>vue_cli使用</title>
     <url>/2022/03/11/vue-cli-shi-yong/</url>
     <content><![CDATA[<h1 id="1-搭建vue项目"><a href="#1-搭建vue项目" class="headerlink" title="1.搭建vue项目"></a>1.搭建vue项目</h1><h2 id="1-首先安装node-js"><a href="#1-首先安装node-js" class="headerlink" title="1)首先安装node.js"></a>1)首先安装node.js</h2><p><a href="http://nodejs.cn/">node官网</a></p>
@@ -88,7 +18,7 @@ npm <span class="token operator">-</span>v
 <p>安装完成后运行下面指令</p>
 <pre class=" language-powershell"><code class="language-powershell">vue list
 </code></pre>
-<p><img src="/.io//1.png"></p>
+<p><img src="/2022/03/11/vue-cli-shi-yong/1.png"></p>
 <p>可以看到vue-cli为我们提供了几个模板，不过主要使用的是webpack模板</p>
 <h2 id="4）使用webpage模板创建运行vue项目"><a href="#4）使用webpage模板创建运行vue项目" class="headerlink" title="4）使用webpage模板创建运行vue项目"></a>4）使用webpage模板创建运行vue项目</h2><p>首先创造一个文件夹，进入文件夹路径执行指令</p>
 <ul>
@@ -163,6 +93,76 @@ Vue<span class="token punctuation">.</span>config<span class="token punctuation"
 <p>配置完成后，就可以使用了</p>
 <pre class=" language-vue"><code class="language-vue"><router-link to="/helloWorld">跳转</router-link> //用此标签来跳转指定路由
 <router-view/> //跳转的路由页面在此显示
+</code></pre>
+]]></content>
+  </entry>
+  <entry>
+    <title>GitHub、Gitee添加SSH认证</title>
+    <url>/2022/03/10/github-gitee-tian-jia-ssh-ren-zheng/</url>
+    <content><![CDATA[<h2 id="1）删除旧ssh文件"><a href="#1）删除旧ssh文件" class="headerlink" title="1）删除旧ssh文件"></a>1）删除旧ssh文件</h2><p>​        在c:&#x2F;用户&#x2F;用户名 下有一个.ssh文件夹，删除里面的旧文件，如果没有.ssh文件夹，新建一个</p>
+<h2 id="2）生成ssh-key"><a href="#2）生成ssh-key" class="headerlink" title="2）生成ssh-key"></a>2）生成ssh-key</h2><ul>
+<li><p>打开终端，执行下面指令（可以用git bash）</p>
+<pre class=" language-pow"><code class="language-pow">// github ---- SSH-key
+ssh-keygen -t rsa -C "aaa@xx.com" -f ~/.ssh/github_id_rsa
+// gitlab ---- SSH-key
+ssh-keygen -t rsa -C "bbb@xx.com" -f ~/.ssh/gitlab_id_rsa
+// gitee ---- SSH-key
+ssh-keygen -t rsa -C "ccc@xx.com" -f ~/.ssh/gitee_id_rsa
+</code></pre>
+</li>
+</ul>
+<h2 id="3）配置config文件"><a href="#3）配置config文件" class="headerlink" title="3）配置config文件"></a>3）配置config文件</h2><ul>
+<li><p>cd ~&#x2F;.ssh</p>
+</li>
+<li><p>touch ~&#x2F;.ssh&#x2F;config</p>
+</li>
+<li><p>在config文件添加如下配置：</p>
+<pre class=" language-tex"><code class="language-tex"># github
+Host github.com
+HostName github.com
+PreferredAuthentications publickey
+IdentityFile ~/.ssh/github_id_rsa
+
+# gitee
+Host gitee.com
+HostName gitee.com
+PreferredAuthentications publickey
+IdentityFile ~/.ssh/gitee_id_rsa
+</code></pre>
+</li>
+</ul>
+<h2 id="4）上传key"><a href="#4）上传key" class="headerlink" title="4）上传key"></a>4）上传key</h2><p>&#x2F;&#x2F; GitHub<br>复制”github_id_rsa.pub”文件内容，添加至GitHub<br>&#x2F;&#x2F; Gitee<br>复制”gitee_id_rsa.pub”文件内容，添加至Gitee</p>
+<h2 id="5）验证ssh"><a href="#5）验证ssh" class="headerlink" title="5）验证ssh"></a>5）验证ssh</h2><pre class=" language-po"><code class="language-po">// GitHub
+ssh -T git@github.com
+// Gitee
+ssh -T git@gitee.com
+</code></pre>
+<ul>
+<li>接着输入“yes”</li>
+<li>若看到如下内容，则验证通过</li>
+</ul>
+<pre class=" language-powershell"><code class="language-powershell">/<span class="token operator">/</span> GitHub
+<span class="token string">"Hi xxxx! You've successfully authenticated, but GitHub does not provide shell access."</span>
+<span class="token operator">/</span><span class="token operator">/</span> Gitee
+<span class="token string">"Hi xxxx! You've successfully authenticated, but Gitee does not provide shell access."</span>
+</code></pre>
+<ul>
+<li>若看到如下内容，则验证未通过</li>
+</ul>
+<pre class=" language-powershell"><code class="language-powershell">/<span class="token operator">/</span> GitHub
+<span class="token string">"git@github.com: Permission denied (publickey)."</span>
+<span class="token operator">/</span><span class="token operator">/</span> Gitee
+<span class="token string">"git@gitee.com: Permission denied (publickey)."</span>
+</code></pre>
+<ul>
+<li>未通过，解决方案，输入如下指令</li>
+</ul>
+<pre class=" language-powershell"><code class="language-powershell">/<span class="token operator">/</span> 由于上诉通过<span class="token string">"ssh-keygen -t rsa -C"</span>生成的key是指定路径的，故此处需要手动执行如下指令：
+ssh<span class="token operator">-</span>agent <span class="token operator">-</span>s
+<span class="token operator">/</span><span class="token operator">/</span> GitHub
+ssh<span class="token operator">-</span>add ~<span class="token operator">/</span><span class="token punctuation">.</span>ssh<span class="token operator">/</span>github_id_rsa
+<span class="token operator">/</span><span class="token operator">/</span> Gitee
+ssh<span class="token operator">-</span>add ~<span class="token operator">/</span><span class="token punctuation">.</span>ssh<span class="token operator">/</span>gitee_id_rsa
 </code></pre>
 ]]></content>
   </entry>
