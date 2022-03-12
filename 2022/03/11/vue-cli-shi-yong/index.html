@@ -456,14 +456,14 @@ npm -v
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    618
+                    1.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    4 分
                 </div>
                 
 
@@ -547,7 +547,7 @@ Vue<span class="token punctuation">.</span><span class="token function">use</spa
       name<span class="token punctuation">:</span> <span class="token string">'HelloWorld'</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">//路由名称</span>
       component<span class="token punctuation">:</span> HelloWorld<span class="token punctuation">,</span><span class="token comment" spellcheck="true">//路由组件</span>
       children<span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//子路由</span>
-          path<span class="token punctuation">:</span> <span class="token string">'/xxx'</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">//子路由路径</span>
+          path<span class="token punctuation">:</span> <span class="token string">'xxx'</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">//子路由路径，注意不要加/，调用是用 /父路由/子路由</span>
           name<span class="token punctuation">:</span> <span class="token string">'xxx'</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">//子路由名称</span>
           component<span class="token punctuation">:</span> xxx<span class="token punctuation">,</span><span class="token comment" spellcheck="true">//子路由组件</span>
           <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
@@ -571,8 +571,98 @@ Vue<span class="token punctuation">.</span>config<span class="token punctuation"
 <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
 </code></pre>
 <p>配置完成后，就可以使用了</p>
+<ul>
+<li>使用&#x3D;&#x3D;<router-link>&#x3D;&#x3D;跳转路由</router-link></li>
+</ul>
 <pre class=" language-vue"><code class="language-vue"><router-link to="/helloWorld">跳转</router-link> //用此标签来跳转指定路由
+<router-link replace to="/helloWorld">跳转</router-link>
+
 <router-view/> //跳转的路由页面在此显示
+</code></pre>
+<p>&#x3D;&#x3D;<router-link>&#x3D;&#x3D;默认为push模式，即在历史记录上追加跳转，可以退回返回上一页</router-link></p>
+<p>而replace则会替换当前记录，退回不了上一页记录</p>
+<ul>
+<li><p>使用编程式路由跳转</p>
+<p>this.$router.push()</p>
+<p>this.$router.replace()</p>
+</li>
+<li><p>路由界面显示</p>
+</li>
+</ul>
+<p>​        &#x3D;&#x3D;<router-view></router-view>&#x3D;&#x3D;</p>
+<p>​        使用该标签可以将路由跳转的界面在此标签显示</p>
+<ul>
+<li><p>路由缓存</p>
+<p>可以将router-view显示的路由组件缓存，当下一次跳转路由时，直接从缓存中读取</p>
+<pre class=" language-vue"><code class="language-vue">//缓存全部
+<keep-alive>
+    <router-view></router-view>
+</keep-alive>
+
+//缓存一个指定路由
+<keep-alive include="路由名">
+    <router-view></router-view>
+</keep-alive>
+
+//缓存多个指定路由
+<keep-alive :include="['路由名1','路由名2'，...]">
+    <router-view></router-view>
+</keep-alive>
+</code></pre>
+</li>
+</ul>
+<h3 id="路由守卫"><a href="#路由守卫" class="headerlink" title="路由守卫"></a>路由守卫</h3><h4 id="全局路由守卫"><a href="#全局路由守卫" class="headerlink" title="全局路由守卫"></a>全局路由守卫</h4><pre class=" language-vue"><code class="language-vue">import Vue from 'vue'
+import Router from 'vue-router' 
+
+Vue.use(Router)//使用路由
+
+const router= new Router(&#123;
+  routes: [
+    &#123;
+      path: '/helloWorld',//路由路径
+      name: 'HelloWorld',//路由名称
+      component: HelloWorld,//路由组件
+      children:[&#123;//子路由
+          path: 'xxx',//子路由路径，注意不要加/，调用是用 /父路由/子路由
+          name: 'xxx',//子路由名称
+          component: xxx,//子路由组件
+          &#125;,
+          &#123;&#125;]
+    &#125;
+  ]
+&#125;)
+
+//前置路由守卫
+router.beforeEach((to,from,next)=>&#123;&#125;)
+//这里的router是你上面创建的路由表的对象名
+//后置路由守卫
+router.afterEach((to,from,next)=>&#123;&#125;)
+
+export default router;
+</code></pre>
+<h4 id="独享路由守卫"><a href="#独享路由守卫" class="headerlink" title="独享路由守卫"></a>独享路由守卫</h4><p>独享路由守卫只有前置的，没有后置</p>
+<pre class=" language-vue"><code class="language-vue">import Vue from 'vue'
+import Router from 'vue-router' //导入路由
+import HelloWorld from '@/components/HelloWorld'//导入要路由的组件
+
+Vue.use(Router)//使用路由
+
+export default new Router(&#123;
+  routes: [
+    &#123;
+      path: '/helloWorld',//路由路径
+      name: 'HelloWorld',//路由名称
+      component: HelloWorld,//路由组件
+      beforEnter:(to,from,next)=>&#123;&#125; //独享路由
+    &#125;
+  ]
+&#125;)
+</code></pre>
+<h4 id="组件路由守卫"><a href="#组件路由守卫" class="headerlink" title="组件路由守卫"></a>组件路由守卫</h4><p>在组件里使用（注意：只有通过路由规则进入组件，才会调用，例如直接在页面引用组件，则不会调用）</p>
+<pre class=" language-vue"><code class="language-vue">//进入该组件是调用
+beforeRouteEnter(to,from,next)&#123;&#125;
+//离开该组件是调用
+beforeRouteLeave(to,from,next)&#123;&#125;
 </code></pre>
 
                 
@@ -1079,7 +1169,7 @@ Vue<span class="token punctuation">.</span>config<span class="token punctuation"
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">954</span>
+                        class="white-color">1.4k</span>
             
             
             
