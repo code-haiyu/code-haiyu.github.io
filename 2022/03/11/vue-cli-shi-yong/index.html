@@ -456,14 +456,14 @@ npm -v
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    1.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    5 分
                 </div>
                 
 
@@ -574,10 +574,10 @@ Vue<span class="token punctuation">.</span>config<span class="token punctuation"
 <ul>
 <li>使用&#x3D;&#x3D;<router-link>&#x3D;&#x3D;跳转路由</router-link></li>
 </ul>
-<pre class=" language-vue"><code class="language-vue"><router-link to="/helloWorld">跳转</router-link> //用此标签来跳转指定路由
-<router-link replace to="/helloWorld">跳转</router-link>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>router-link</span> <span class="token attr-name">to</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/helloWorld<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>跳转<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>router-link</span><span class="token punctuation">></span></span> //用此标签来跳转指定路由
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>router-link</span> <span class="token attr-name">replace</span> <span class="token attr-name">to</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/helloWorld<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>跳转<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>router-link</span><span class="token punctuation">></span></span>
 
-<router-view/> //跳转的路由页面在此显示
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>router-view</span><span class="token punctuation">/></span></span> //跳转的路由页面在此显示
 </code></pre>
 <p>&#x3D;&#x3D;<router-link>&#x3D;&#x3D;默认为push模式，即在历史记录上追加跳转，可以退回返回上一页</router-link></p>
 <p>而replace则会替换当前记录，退回不了上一页记录</p>
@@ -594,75 +594,75 @@ Vue<span class="token punctuation">.</span>config<span class="token punctuation"
 <ul>
 <li><p>路由缓存</p>
 <p>可以将router-view显示的路由组件缓存，当下一次跳转路由时，直接从缓存中读取</p>
-<pre class=" language-vue"><code class="language-vue">//缓存全部
-<keep-alive>
-    <router-view></router-view>
-</keep-alive>
+<pre class=" language-html"><code class="language-html">//缓存全部
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>keep-alive</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>router-view</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>router-view</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>keep-alive</span><span class="token punctuation">></span></span>
 
 //缓存一个指定路由
-<keep-alive include="路由名">
-    <router-view></router-view>
-</keep-alive>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>keep-alive</span> <span class="token attr-name">include</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>路由名<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>router-view</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>router-view</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>keep-alive</span><span class="token punctuation">></span></span>
 
 //缓存多个指定路由
-<keep-alive :include="['路由名1','路由名2'，...]">
-    <router-view></router-view>
-</keep-alive>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>keep-alive</span> <span class="token attr-name">:include</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>[<span class="token punctuation">'</span>路由名1<span class="token punctuation">'</span>,<span class="token punctuation">'</span>路由名2<span class="token punctuation">'</span>，...]<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>router-view</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>router-view</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>keep-alive</span><span class="token punctuation">></span></span>
 </code></pre>
 </li>
 </ul>
-<h3 id="路由守卫"><a href="#路由守卫" class="headerlink" title="路由守卫"></a>路由守卫</h3><h4 id="全局路由守卫"><a href="#全局路由守卫" class="headerlink" title="全局路由守卫"></a>全局路由守卫</h4><pre class=" language-vue"><code class="language-vue">import Vue from 'vue'
-import Router from 'vue-router' 
+<h3 id="路由守卫"><a href="#路由守卫" class="headerlink" title="路由守卫"></a>路由守卫</h3><h4 id="全局路由守卫"><a href="#全局路由守卫" class="headerlink" title="全局路由守卫"></a>全局路由守卫</h4><pre class=" language-js"><code class="language-js"><span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">'vue'</span>
+<span class="token keyword">import</span> Router <span class="token keyword">from</span> <span class="token string">'vue-router'</span> 
 
-Vue.use(Router)//使用路由
+Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>Router<span class="token punctuation">)</span><span class="token comment" spellcheck="true">//使用路由</span>
 
-const router= new Router(&#123;
-  routes: [
-    &#123;
-      path: '/helloWorld',//路由路径
-      name: 'HelloWorld',//路由名称
-      component: HelloWorld,//路由组件
-      children:[&#123;//子路由
-          path: 'xxx',//子路由路径，注意不要加/，调用是用 /父路由/子路由
-          name: 'xxx',//子路由名称
-          component: xxx,//子路由组件
-          &#125;,
-          &#123;&#125;]
-    &#125;
-  ]
-&#125;)
+<span class="token keyword">const</span> router<span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Router</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+  routes<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+      path<span class="token punctuation">:</span> <span class="token string">'/helloWorld'</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">//路由路径</span>
+      name<span class="token punctuation">:</span> <span class="token string">'HelloWorld'</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">//路由名称</span>
+      component<span class="token punctuation">:</span> HelloWorld<span class="token punctuation">,</span><span class="token comment" spellcheck="true">//路由组件</span>
+      children<span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//子路由</span>
+          path<span class="token punctuation">:</span> <span class="token string">'xxx'</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">//子路由路径，注意不要加/，调用是用 /父路由/子路由</span>
+          name<span class="token punctuation">:</span> <span class="token string">'xxx'</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">//子路由名称</span>
+          component<span class="token punctuation">:</span> xxx<span class="token punctuation">,</span><span class="token comment" spellcheck="true">//子路由组件</span>
+          <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
+          <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">]</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+  <span class="token punctuation">]</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
 
-//前置路由守卫
-router.beforeEach((to,from,next)=>&#123;&#125;)
-//这里的router是你上面创建的路由表的对象名
-//后置路由守卫
-router.afterEach((to,from,next)=>&#123;&#125;)
+<span class="token comment" spellcheck="true">//前置路由守卫</span>
+router<span class="token punctuation">.</span><span class="token function">beforeEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>to<span class="token punctuation">,</span><span class="token keyword">from</span><span class="token punctuation">,</span>next<span class="token punctuation">)</span><span class="token operator">=</span><span class="token operator">></span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">//这里的router是你上面创建的路由表的对象名</span>
+<span class="token comment" spellcheck="true">//后置路由守卫</span>
+router<span class="token punctuation">.</span><span class="token function">afterEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>to<span class="token punctuation">,</span><span class="token keyword">from</span><span class="token punctuation">,</span>next<span class="token punctuation">)</span><span class="token operator">=</span><span class="token operator">></span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
 
-export default router;
+<span class="token keyword">export</span> <span class="token keyword">default</span> router<span class="token punctuation">;</span>
 </code></pre>
 <h4 id="独享路由守卫"><a href="#独享路由守卫" class="headerlink" title="独享路由守卫"></a>独享路由守卫</h4><p>独享路由守卫只有前置的，没有后置</p>
-<pre class=" language-vue"><code class="language-vue">import Vue from 'vue'
-import Router from 'vue-router' //导入路由
-import HelloWorld from '@/components/HelloWorld'//导入要路由的组件
+<pre class=" language-js"><code class="language-js"><span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">'vue'</span>
+<span class="token keyword">import</span> Router <span class="token keyword">from</span> <span class="token string">'vue-router'</span> <span class="token comment" spellcheck="true">//导入路由</span>
+<span class="token keyword">import</span> HelloWorld <span class="token keyword">from</span> <span class="token string">'@/components/HelloWorld'</span><span class="token comment" spellcheck="true">//导入要路由的组件</span>
 
-Vue.use(Router)//使用路由
+Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>Router<span class="token punctuation">)</span><span class="token comment" spellcheck="true">//使用路由</span>
 
-export default new Router(&#123;
-  routes: [
-    &#123;
-      path: '/helloWorld',//路由路径
-      name: 'HelloWorld',//路由名称
-      component: HelloWorld,//路由组件
-      beforEnter:(to,from,next)=>&#123;&#125; //独享路由
-    &#125;
-  ]
-&#125;)
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">new</span> <span class="token class-name">Router</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+  routes<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+      path<span class="token punctuation">:</span> <span class="token string">'/helloWorld'</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">//路由路径</span>
+      name<span class="token punctuation">:</span> <span class="token string">'HelloWorld'</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">//路由名称</span>
+      component<span class="token punctuation">:</span> HelloWorld<span class="token punctuation">,</span><span class="token comment" spellcheck="true">//路由组件</span>
+      beforEnter<span class="token punctuation">:</span><span class="token punctuation">(</span>to<span class="token punctuation">,</span><span class="token keyword">from</span><span class="token punctuation">,</span>next<span class="token punctuation">)</span><span class="token operator">=</span><span class="token operator">></span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//独享路由</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+  <span class="token punctuation">]</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
 </code></pre>
 <h4 id="组件路由守卫"><a href="#组件路由守卫" class="headerlink" title="组件路由守卫"></a>组件路由守卫</h4><p>在组件里使用（注意：只有通过路由规则进入组件，才会调用，例如直接在页面引用组件，则不会调用）</p>
-<pre class=" language-vue"><code class="language-vue">//进入该组件是调用
-beforeRouteEnter(to,from,next)&#123;&#125;
-//离开该组件是调用
-beforeRouteLeave(to,from,next)&#123;&#125;
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">//进入该组件是调用</span>
+<span class="token function">beforeRouteEnter</span><span class="token punctuation">(</span>to<span class="token punctuation">,</span><span class="token keyword">from</span><span class="token punctuation">,</span>next<span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//离开该组件是调用</span>
+<span class="token function">beforeRouteLeave</span><span class="token punctuation">(</span>to<span class="token punctuation">,</span><span class="token keyword">from</span><span class="token punctuation">,</span>next<span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 </code></pre>
 
                 
@@ -1169,7 +1169,7 @@ beforeRouteLeave(to,from,next)&#123;&#125;
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">1.4k</span>
+                        class="white-color">1.5k</span>
             
             
             
