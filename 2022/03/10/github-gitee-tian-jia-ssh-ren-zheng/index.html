@@ -8,7 +8,7 @@
     <meta name="description" content="1）删除旧ssh文件​        在c:&amp;#x2F;用户&amp;#x2F;用户名 下有一个.ssh文件夹，删除里面的旧文件，如果没有.ssh文件夹，新建一个
 2）生成ssh-key
 打开终端，执行下面指令（可以用git bash）
-// gi">
+&amp;#x2F">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -33,7 +33,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 6.0.0"></head>
 
 
 
@@ -454,7 +454,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    336
+                    362
                 </div>
                 
 
@@ -476,6 +476,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -484,14 +487,12 @@
                 <h2 id="1）删除旧ssh文件"><a href="#1）删除旧ssh文件" class="headerlink" title="1）删除旧ssh文件"></a>1）删除旧ssh文件</h2><p>​        在c:&#x2F;用户&#x2F;用户名 下有一个.ssh文件夹，删除里面的旧文件，如果没有.ssh文件夹，新建一个</p>
 <h2 id="2）生成ssh-key"><a href="#2）生成ssh-key" class="headerlink" title="2）生成ssh-key"></a>2）生成ssh-key</h2><ul>
 <li><p>打开终端，执行下面指令（可以用git bash）</p>
-<pre class=" language-pow"><code class="language-pow">// github ---- SSH-key
-ssh-keygen -t rsa -C "aaa@xx.com" -f ~/.ssh/github_id_rsa
-// gitlab ---- SSH-key
-ssh-keygen -t rsa -C "bbb@xx.com" -f ~/.ssh/gitlab_id_rsa
-// gitee ---- SSH-key
-ssh-keygen -t rsa -C "ccc@xx.com" -f ~/.ssh/gitee_id_rsa
-</code></pre>
-</li>
+<pre class="line-numbers language-pow" data-language="pow"><code class="language-pow">&#x2F;&#x2F; github ---- SSH-key
+ssh-keygen -t rsa -C &quot;aaa@xx.com&quot; -f ~&#x2F;.ssh&#x2F;github_id_rsa
+&#x2F;&#x2F; gitlab ---- SSH-key
+ssh-keygen -t rsa -C &quot;bbb@xx.com&quot; -f ~&#x2F;.ssh&#x2F;gitlab_id_rsa
+&#x2F;&#x2F; gitee ---- SSH-key
+ssh-keygen -t rsa -C &quot;ccc@xx.com&quot; -f ~&#x2F;.ssh&#x2F;gitee_id_rsa<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ul>
 <h2 id="3）配置config文件"><a href="#3）配置config文件" class="headerlink" title="3）配置config文件"></a>3）配置config文件</h2><ul>
 <li><p>cd ~&#x2F;.ssh</p>
@@ -499,53 +500,51 @@ ssh-keygen -t rsa -C "ccc@xx.com" -f ~/.ssh/gitee_id_rsa
 <li><p>touch ~&#x2F;.ssh&#x2F;config</p>
 </li>
 <li><p>在config文件添加如下配置：</p>
-<pre class=" language-tex"><code class="language-tex"># github
+<pre class="line-numbers language-tex" data-language="tex"><code class="language-tex"># github
 Host github.com
 HostName github.com
 PreferredAuthentications publickey
-IdentityFile ~/.ssh/github_id_rsa
+IdentityFile ~&#x2F;.ssh&#x2F;github_id_rsa
 
 # gitee
 Host gitee.com
 HostName gitee.com
 PreferredAuthentications publickey
-IdentityFile ~/.ssh/gitee_id_rsa
-</code></pre>
-</li>
+IdentityFile ~&#x2F;.ssh&#x2F;gitee_id_rsa
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ul>
 <h2 id="4）上传key"><a href="#4）上传key" class="headerlink" title="4）上传key"></a>4）上传key</h2><p>&#x2F;&#x2F; GitHub<br>复制”github_id_rsa.pub”文件内容，添加至GitHub<br>&#x2F;&#x2F; Gitee<br>复制”gitee_id_rsa.pub”文件内容，添加至Gitee</p>
-<h2 id="5）验证ssh"><a href="#5）验证ssh" class="headerlink" title="5）验证ssh"></a>5）验证ssh</h2><pre class=" language-po"><code class="language-po">// GitHub
+<h2 id="5）验证ssh"><a href="#5）验证ssh" class="headerlink" title="5）验证ssh"></a>5）验证ssh</h2><pre class="line-numbers language-po" data-language="po"><code class="language-po">&#x2F;&#x2F; GitHub
 ssh -T git@github.com
-// Gitee
-ssh -T git@gitee.com
-</code></pre>
+&#x2F;&#x2F; Gitee
+ssh -T git@gitee.com<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <ul>
 <li>接着输入“yes”</li>
 <li>若看到如下内容，则验证通过</li>
 </ul>
-<pre class=" language-powershell"><code class="language-powershell">/<span class="token operator">/</span> GitHub
+<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell"><span class="token operator">/</span><span class="token operator">/</span> GitHub
 <span class="token string">"Hi xxxx! You've successfully authenticated, but GitHub does not provide shell access."</span>
 <span class="token operator">/</span><span class="token operator">/</span> Gitee
-<span class="token string">"Hi xxxx! You've successfully authenticated, but Gitee does not provide shell access."</span>
-</code></pre>
+<span class="token string">"Hi xxxx! You've successfully authenticated, but Gitee does not provide shell access."</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <ul>
 <li>若看到如下内容，则验证未通过</li>
 </ul>
-<pre class=" language-powershell"><code class="language-powershell">/<span class="token operator">/</span> GitHub
+<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell"><span class="token operator">/</span><span class="token operator">/</span> GitHub
 <span class="token string">"git@github.com: Permission denied (publickey)."</span>
 <span class="token operator">/</span><span class="token operator">/</span> Gitee
-<span class="token string">"git@gitee.com: Permission denied (publickey)."</span>
-</code></pre>
+<span class="token string">"git@gitee.com: Permission denied (publickey)."</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <ul>
 <li>未通过，解决方案，输入如下指令</li>
 </ul>
-<pre class=" language-powershell"><code class="language-powershell">/<span class="token operator">/</span> 由于上诉通过<span class="token string">"ssh-keygen -t rsa -C"</span>生成的key是指定路径的，故此处需要手动执行如下指令：
-ssh<span class="token operator">-</span>agent <span class="token operator">-</span>s
+<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell"><span class="token operator">/</span><span class="token operator">/</span> 由于上诉通过<span class="token string">"ssh-keygen -t rsa -C"</span>生成的key是指定路径的，故此处需要手动执行如下指令：
+ssh-agent <span class="token operator">-</span>s
 <span class="token operator">/</span><span class="token operator">/</span> GitHub
-ssh<span class="token operator">-</span>add ~<span class="token operator">/</span><span class="token punctuation">.</span>ssh<span class="token operator">/</span>github_id_rsa
+ssh-add ~<span class="token operator">/</span><span class="token punctuation">.</span>ssh/github_id_rsa
 <span class="token operator">/</span><span class="token operator">/</span> Gitee
-ssh<span class="token operator">-</span>add ~<span class="token operator">/</span><span class="token punctuation">.</span>ssh<span class="token operator">/</span>gitee_id_rsa
-</code></pre>
+ssh-add ~<span class="token operator">/</span><span class="token punctuation">.</span>ssh/gitee_id_rsa<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
